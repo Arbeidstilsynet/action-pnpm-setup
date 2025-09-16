@@ -24,6 +24,6 @@ runs:
       run: pnpm audit
     - shell: bash
       run: pnpm install
-    - shell: bash
+    - name: "List packages"
+      shell: bash
       run: pnpm ls -r --depth 0
-      name: "List packages"
