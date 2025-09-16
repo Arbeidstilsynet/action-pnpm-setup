@@ -1,10 +1,8 @@
-# Arbeidstilsynet/action-noop
+# Arbeidstilsynet/action-pnpm-setup
 
-> **Note:** This is a template repository for creating simple composite GitHub Actions.
->
-> After creating the new repo you should enable "Allow auto-merge" and "Automatically delete head branches" in Settings -> General -> Pull Requests.
+Opinionated action for fully setting up dependencies for a PNPM-based project. Installs chosen Node version, PNPM, audits dependencies and finally installs dependencies.
 
-A no-op GitHub Action that echoes inputs and sets outputs.
+Configure `packageManager` in `package.json` to ensure the same version of PNPM is used in pipelines and locally. Use [Corepack](https://pnpm.io/installation#using-corepack) locally to always get the correct version of PNPM for your repo.
 
 ## Versioning
 
@@ -14,46 +12,31 @@ If you have to make breaking changes to the action, bump the version.
 
 ## Requirements
 
-- None
+PNPM version must be specified in `packageManager` in your `package.json`.
 
 ## Inputs
 
-| Name         | Description        | Required | Default         |
-|--------------|--------------------|----------|-----------------|
-| `input-one`  | First input value  | Yes      |                 |
-| `input-two`  | Second input value | No       | `default-value` |
+| Name           | Description            | Required | Default |
+|----------------|------------------------|----------|---------|
+| `node-version` | Node.js version to use | No       | 24.x    |
 
 ## Outputs
 
-| Name        | Description           |
-|-------------|-----------------------|
-| `output-one`| Echo of input-one     |
-| `output-two`| Echo of input-two     |
+None
 
 ## Usage
 
 ```yaml
-name: Example No-op Action Usage
-
 on:
-  push:
-    branches:
-      - main
+  pull-request:
 
 jobs:
-  noop-job:
+  ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: Arbeidstilsynet/action-noop@v1
-        id: noop
+      - uses: Arbeidstilsynet/action-pnpm-setup@v1
         with:
-          input-one: "Hello"
-          input-two: "World"
-
-      - name: Show outputs
-        run: |
-          echo "Output one: ${{ steps.noop.outputs.output-one }}"
-          echo "Output two: ${{ steps.noop.outputs.output-two }}"
+          node-version: "24.x"
 ```

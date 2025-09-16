@@ -1,32 +1,29 @@
-name: "No-op Action"
+name: "PNPM setup"
 author: "Arbeidstilsynet"
-description: "A no-op GitHub Action that echoes inputs and sets outputs."
+description: "Setups Node and PNPM, runs audit and install"
 
 inputs:
-  input-one:
-    description: "First input value"
-    required: true
-  input-two:
-    description: "Second input value"
+  node-version:
+    description: "Node.js version to use"
+    default: "24.x"
     required: false
-    default: "default-value"
-
-outputs:
-  output-one:
-    description: "Echo of input-one"
-    value: ${{ steps.noop.outputs.output-one }}
-  output-two:
-    description: "Echo of input-two"
-    value: ${{ steps.noop.outputs.output-two }}
 
 runs:
-  using: "composite"
+  using: composite
   steps:
-    - name: Echo inputs and set outputs
-      id: noop
-      shell: bash
-      run: |
-        echo "input-one: ${{ inputs.input-one }}"
-        echo "input-two: ${{ inputs.input-two }}"
-        echo "output-one=${{ inputs.input-one }}" >> $GITHUB_OUTPUT
-        echo "output-two=${{ inputs.input-two }}" >> $GITHUB_OUTPUT
+    - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4
+    - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+      with:
+        node-version: "${{ inputs.node-version }}"
+        cache: "pnpm"
+        registry-url: "https://registry.npmjs.org"
+
+    - shell: bash
+      run: pnpm --version
+    - shell: bash
+      run: pnpm audit
+    - shell: bash
+      run: pnpm install
+    - shell: bash
+      run: pnpm ls -r --depth 0
+      name: "List packages"
