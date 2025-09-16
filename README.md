@@ -28,7 +28,7 @@ None
 
 ```yaml
 on:
-  pull-request:
+  pull_request:
 
 jobs:
   ci:
