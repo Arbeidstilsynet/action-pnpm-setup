@@ -8,7 +8,7 @@ inputs:
     default: "24.x"
     required: false
   working-directory:
-    description: "Working directory containing package.json"
+    description: "Working directory containing package.json and pnpm-lock.yaml"
     default: "."
     required: false
 
@@ -24,6 +24,7 @@ runs:
         node-version: "${{ inputs.node-version }}"
         cache: "pnpm"
         registry-url: "https://registry.npmjs.org"
+        cache-dependency-path: "${{ inputs.working-directory }}/pnpm-lock.yaml"
 
     - shell: bash
       run: pnpm --version
