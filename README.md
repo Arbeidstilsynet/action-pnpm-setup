@@ -16,10 +16,10 @@ PNPM version must be specified in `packageManager` in your `package.json`.
 
 ## Inputs
 
-| Name                | Description                               | Required | Default |
-|---------------------|-------------------------------------------|----------|---------|
-| `node-version`      | Node.js version to use                    | No       | `24.x`  |
-| `working-directory` | Working directory containing package.json | No       | `.`     |
+| Name                | Description                                                  | Required | Default |
+|---------------------|--------------------------------------------------------------|----------|---------|
+| `node-version`      | Node.js version to use                                       | No       | `24.x`  |
+| `working-directory` | Working directory containing package.json and pnpm-lock.yaml | No       | `.`     |
 
 ## Outputs
 
