@@ -16,9 +16,10 @@ PNPM version must be specified in `packageManager` in your `package.json`.
 
 ## Inputs
 
-| Name           | Description            | Required | Default |
-|----------------|------------------------|----------|---------|
-| `node-version` | Node.js version to use | No       | 24.x    |
+| Name                | Description            | Required | Default      |
+|---------------------|------------------------|----------|--------------|
+| `node-version`      | Node.js version to use | No       | 24.x         |
+| `package-json-file` | Path to package.json   | No       | package.json |
 
 ## Outputs
 
