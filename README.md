@@ -16,9 +16,10 @@ PNPM version must be specified in `packageManager` in your `package.json`.
 
 ## Inputs
 
-| Name           | Description            | Required | Default |
-|----------------|------------------------|----------|---------|
-| `node-version` | Node.js version to use | No       | 24.x    |
+| Name                | Description                               | Required | Default |
+|---------------------|-------------------------------------------|----------|---------|
+| `node-version`      | Node.js version to use                    | No       | `24.x`  |
+| `working-directory` | Working directory containing package.json | No       | `.`     |
 
 ## Outputs
 
@@ -39,4 +40,5 @@ jobs:
       - uses: Arbeidstilsynet/action-pnpm-setup@v1
         with:
           node-version: "24.x"
+          working-directory: "some/path"
 ```
