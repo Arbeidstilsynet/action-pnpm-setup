@@ -4,12 +4,6 @@ Opinionated action for fully setting up dependencies for a PNPM-based project. I
 
 Configure `packageManager` in `package.json` to ensure the same version of PNPM is used in pipelines and locally. Use [Corepack](https://pnpm.io/installation#using-corepack) locally to always get the correct version of PNPM for your repo.
 
-## Versioning
-
-This repository uses a simple versioning system based on the `VERSION` file.
-When you update the `VERSION` file and push to `main`, a Git tag with that version is created or updated automatically by the workflow.
-If you have to make breaking changes to the action, bump the version.
-
 ## Requirements
 
 PNPM version must be specified in `packageManager` in your `package.json`.
@@ -42,3 +36,9 @@ jobs:
           node-version: "24.x"
           working-directory: "some/path"
 ```
+
+## Versioning
+
+This repository uses a simple versioning system based on the `VERSION` file.
+When you update the `VERSION` file and push to `main`, a Git tag with that version is created or updated automatically by the workflow.
+If you make breaking changes to the action, bump the version and update `CHANGELOG.md`.
