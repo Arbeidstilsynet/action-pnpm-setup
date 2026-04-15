@@ -11,6 +11,14 @@ inputs:
     description: "Working directory containing package.json and pnpm-lock.yaml"
     default: "."
     required: false
+  skip-install:
+    description: "Skip pnpm install step"
+    default: "false"
+    required: false
+  skip-audit:
+    description: "Skip pnpm audit step"
+    default: "false"
+    required: false
 
 runs:
   using: composite
@@ -28,13 +36,19 @@ runs:
     - shell: bash
       run: pnpm --version
       working-directory: ${{ inputs.working-directory }}
+
     - shell: bash
+      if: ${{ inputs.skip-audit != 'true' }}
       run: pnpm audit
       working-directory: ${{ inputs.working-directory }}
+
     - shell: bash
+      if: ${{ inputs.skip-install != 'true' }}
       run: pnpm install
       working-directory: ${{ inputs.working-directory }}
+
     - name: "List packages"
       shell: bash
+      if: ${{ inputs.skip-install != 'true' }}
       run: pnpm ls -r --depth 0
       working-directory: ${{ inputs.working-directory }}
