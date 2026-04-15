@@ -10,16 +10,20 @@ PNPM version must be specified in `packageManager` in your `package.json`.
 
 ## Inputs
 
-| Name                | Description                                                  | Required | Default |
-|---------------------|--------------------------------------------------------------|----------|---------|
-| `node-version`      | Node.js version to use                                       | No       | `24.x`  |
-| `working-directory` | Working directory containing package.json and pnpm-lock.yaml | No       | `.`     |
+| Name                | Description                                                  | Required | Default  |
+|---------------------|--------------------------------------------------------------|----------|----------|
+| `node-version`      | Node.js version to use                                       | No       | `24.x`   |
+| `working-directory` | Working directory containing package.json and pnpm-lock.yaml | No       | `.`      |
+| `skip-install`      | Skip pnpm install step                                       | No       | `false`  |
+| `skip-audit`        | Skip pnpm audit step                                         | No       | `false`  |
 
 ## Outputs
 
 None
 
 ## Usage
+
+### Minimal
 
 ```yaml
 on:
@@ -29,12 +33,27 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
+      - uses: Arbeidstilsynet/action-pnpm-setup@v1
+```
 
+### With all optional inputs
+
+```yaml
+on:
+  pull_request:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
       - uses: Arbeidstilsynet/action-pnpm-setup@v1
         with:
           node-version: "24.x"
           working-directory: "some/path"
+          skip-install: false
+          skip-audit: false
 ```
 
 ## Versioning
