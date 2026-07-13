@@ -5,7 +5,7 @@ description: "Setups Node and PNPM, runs audit and install"
 inputs:
   node-version:
     description: "Node.js version to use"
-    default: "24.x"
+    default: "25.x"
     required: false
   working-directory:
     description: "Working directory containing package.json and pnpm-lock.yaml"
