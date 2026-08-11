@@ -1,6 +1,6 @@
 # Arbeidstilsynet/action-pnpm-setup
 
-Opinionated action for fully setting up dependencies for a PNPM-based project. Installs chosen Node version, PNPM, audits dependencies and finally installs dependencies.
+Opinionated action for fully setting up dependencies for a pnpm-based project. Installs the chosen Node.js version and pnpm, optionally audits dependencies, and finally installs dependencies.
 
 Configure `packageManager` in `package.json` to ensure the same version of PNPM is used in pipelines and locally. Use [Corepack](https://pnpm.io/installation#using-corepack) locally to always get the correct version of PNPM for your repo.
 
@@ -15,7 +15,9 @@ PNPM version must be specified in `packageManager` in your `package.json`.
 | `node-version`      | Node.js version to use                                       | No       | `26.x`   |
 | `working-directory` | Working directory containing package.json and pnpm-lock.yaml | No       | `.`      |
 | `skip-install`      | Skip pnpm install step                                       | No       | `false`  |
-| `skip-audit`        | Skip pnpm audit step                                         | No       | `false`  |
+| `skip-audit`        | Skip pnpm audit step                                         | No       | `true`   |
+
+Auditing is disabled by default. Set `skip-audit: false` to run `pnpm audit`.
 
 ## Outputs
 
@@ -34,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: Arbeidstilsynet/action-pnpm-setup@v2
+      - uses: Arbeidstilsynet/action-pnpm-setup@v3
 ```
 
 ### With all optional inputs
@@ -48,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: Arbeidstilsynet/action-pnpm-setup@v2
+      - uses: Arbeidstilsynet/action-pnpm-setup@v3
         with:
           node-version: "26.x"
           working-directory: "some/path"

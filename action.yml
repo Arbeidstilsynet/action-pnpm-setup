@@ -1,6 +1,6 @@
 name: "PNPM setup"
 author: "Arbeidstilsynet"
-description: "Setups Node and PNPM, runs audit and install"
+description: "Sets up Node.js and pnpm, optionally audits, and installs dependencies"
 
 inputs:
   node-version:
@@ -17,7 +17,7 @@ inputs:
     required: false
   skip-audit:
     description: "Skip pnpm audit step"
-    default: "false"
+    default: "true"
     required: false
 
 runs:
