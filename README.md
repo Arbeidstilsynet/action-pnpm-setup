@@ -4,12 +4,12 @@ Opinionated action for fully setting up dependencies for a pnpm-based project. I
 
 Configure `packageManager` in `package.json` to ensure the same version of PNPM is used in pipelines and locally. Use [Corepack](https://pnpm.io/installation#using-corepack) locally to always get the correct version of PNPM for your repo.
 
+> [!NOTE]
+> For repositories using pnpm 11 or newer, use [pnpm/setup](https://github.com/pnpm/setup) instead.
+
 ## Requirements
 
 PNPM version must be specified in `packageManager` in your `package.json`.
-
-> [!NOTE]
-> For repositories using pnpm 11 or newer, use [pnpm/setup](https://github.com/pnpm/setup) instead.
 
 ## Inputs
 
