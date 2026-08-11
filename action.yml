@@ -16,7 +16,7 @@ inputs:
     default: "false"
     required: false
   skip-audit:
-    description: "Skip pnpm audit step"
+    description: "Skip pnpm audit step; set to false to run pnpm audit"
     default: "true"
     required: false
 
