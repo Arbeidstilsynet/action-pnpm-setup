@@ -8,6 +8,9 @@ Configure `packageManager` in `package.json` to ensure the same version of PNPM 
 
 PNPM version must be specified in `packageManager` in your `package.json`.
 
+> [!NOTE]
+> For repositories using pnpm 11 or newer, use [pnpm/setup](https://github.com/pnpm/setup) instead.
+
 ## Inputs
 
 | Name                | Description                                                  | Required | Default  |
