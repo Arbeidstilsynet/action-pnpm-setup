@@ -7,22 +7,29 @@ inputs:
     description: "Node.js version to use"
     default: "26.x"
     required: false
+    deprecationMessage: "This action is deprecated. Use `pnpm/setup` instead and version Node.js with `devEngines` in `package.json`."
   working-directory:
     description: "Working directory containing package.json and pnpm-lock.yaml"
     default: "."
     required: false
+    deprecationMessage: "This action is deprecated. Use `pnpm/setup` instead."
   skip-install:
     description: "Skip pnpm install step"
     default: "false"
     required: false
+    deprecationMessage: "This action is deprecated. Use `pnpm/setup` instead."
   skip-audit:
     description: "Skip pnpm audit step; set to false to run pnpm audit"
     default: "true"
     required: false
+    deprecationMessage: "This action is deprecated. Use `pnpm/setup` instead and run pnpm audit in your workflow."
 
 runs:
   using: composite
   steps:
+    - shell: bash
+      run: echo "::warning title=Arbeidstilsynet/action-pnpm-setup is deprecated::Migrate to pnpm/setup. See https://github.com/pnpm/setup"
+
     - uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
       with:
         package_json_file: "${{ inputs.working-directory }}/package.json"

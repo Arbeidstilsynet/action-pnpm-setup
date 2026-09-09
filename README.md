@@ -1,11 +1,11 @@
 # Arbeidstilsynet/action-pnpm-setup
 
+> [!WARNING]
+> This action is deprecated. Migrate to [pnpm/setup](https://github.com/pnpm/setup). Note that `pnpm/setup` is different from the older `pnpm/action-setup`.
+
 Opinionated action for fully setting up dependencies for a pnpm-based project. Installs the chosen Node.js version and pnpm, optionally audits dependencies, and finally installs dependencies.
 
 Configure `packageManager` in `package.json` to ensure the same version of PNPM is used in pipelines and locally. Use [Corepack](https://pnpm.io/installation#using-corepack) locally to always get the correct version of PNPM for your repo.
-
-> [!NOTE]
-> For repositories using pnpm 11 or newer, use [pnpm/setup](https://github.com/pnpm/setup) instead.
 
 ## Requirements
 

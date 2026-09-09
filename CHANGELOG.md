@@ -1,5 +1,9 @@
 # Changelog
 
+## v4
+
+This is the final release of this action. It is deprecated in favor of [pnpm/setup](https://github.com/pnpm/setup). Workflows now emit a deprecation warning, and all inputs are marked deprecated in action metadata.
+
 ## v3
 
 **Breaking change:** Auditing is now opt-in. The `skip-audit` input now defaults to `true`. Consumers that want the action to run `pnpm audit` must explicitly set `skip-audit: false`.
