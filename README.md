@@ -38,8 +38,8 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: Arbeidstilsynet/action-pnpm-setup@v3
+      - uses: actions/checkout@v7
+      - uses: Arbeidstilsynet/action-pnpm-setup@v4
 ```
 
 ### With all optional inputs
@@ -53,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: Arbeidstilsynet/action-pnpm-setup@v3
+      - uses: Arbeidstilsynet/action-pnpm-setup@v4
         with:
           node-version: "26.x"
           working-directory: "some/path"
